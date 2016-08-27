@@ -1,0 +1,97 @@
+﻿
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Seerah Online</title>
+        <!-- Bootstrap Core CSS -->
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="~/Content/simple-sidebar.css" rel="stylesheet">
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body ng-app="SeerahApp">
+        <div id="wrapper" ng-controller="SeerahController">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper">
+              
+                <ul class="sidebar-nav ">
+                    <li class=" sidebar-brand">
+                    <a href="#">
+                        Seerah Online
+                    </a>
+                    </li>
+                    <li>
+                        <!-- Split button -->
+                        <!-- Large button group -->
+                        <div class="btn-group">
+                            <button ng-model="ModelYear" class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ModelYear}}
+                            </button>
+                            <ul class="dropdown-menu" style="background-color:black;">
+                                <li ng-repeat="bh in BeforeHijri">
+                                    <a class="dropdown-item" href="#" ng-click="SelectHijri(bh,'before');">{{bh}}</a>
+
+                                <li />
+
+                            </ul>
+                        </div>
+
+
+                    </li>
+
+                    <li>
+                        <div class="btn-group" style="padding-top:50px;">
+                            <button ng-model="ModelYear" class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ModelAfterHijri}}
+                            </button>
+                            <ul class="dropdown-menu " style="background-color:black;">
+                                <li ng-repeat="ah in AfterHijri">
+                                    <a class="dropdown-item" href="#" ng-click="SelectHijri(ah,'after');">{{ah}}</a>
+
+                                <li />
+                            </ul>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- /#sidebar-wrapper -->
+            <div class="container body-content">
+                @RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - Seerah Online Web app</p>
+                </footer>
+            </div>
+
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        <script src="~/Scripts/angular.min.js"></script>
+        <script src="~/Scripts/angular-sanitize.min.js"></script>
+        <script src="~/Scripts/app.js"></script>
+        <script src="~/Scripts/DataModelService.js"></script>
+        <script src="~/Scripts/SeerahController.js"></script>
+        @RenderSection("scripts", required: false)
+
+        <!-- Menu Toggle Script -->
+        <script>
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
+    </body>
+</html>

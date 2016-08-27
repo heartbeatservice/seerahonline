@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="col-md-9 col-lg-10 main">
+    <div class="row">
+        <div class="col-md-12"><h1>{{Current.Year}}</h1></div>
+        <div class="col-lg-12">
+            <ul class="nav nav-tabs" role="tablist">
+      
+                <li class="nav-item"><a class="nav-link active"data-toggle="tab" href="#events">Events</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#lesson">Lesson</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#quran">Quran</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#quran">Miscel</a></li>
+            </ul>
+            <div class="col-md-10">
+                <div class="tab-content" style="font-size:larger">
+
+                    <div id="events" class="tab-pane fade in active">
+                        <div class="well" style="overflow:auto;height:400px;margin-top:40px;">
+
+                            <p>
+
+                                <div ng-repeat="event in Current.Events" ng-bind-html="event">{{event}}</div>
+
+
+
+
+
+
+
+                            </p>
+                        </div>
+                    </div>
+                    <div id="lesson" class="tab-pane fade">
+                        <div class="well" style="overflow:auto;height:400px;margin-top:40px;">
+                            <p>
+
+
+                                <div ng-repeat="lesson in Current.Lessons" ng-bind-html="lesson">{{lesson}} </div>
+
+
+
+
+
+
+
+                            </p>
+                        </div>
+                    </div>
+                    <div id="quran" class="tab-pane fade">
+
+                        <div class="well" style="overflow:auto;height:400px;margin-top:40px;">
+                            <div class=" col-md-10">
+
+                                <p>
+                                    <ul style="list-style-type:none">
+                                        <li ng-bind-html="Current.Quran.Revealation"> {{Current.Quran.Revealation}}</li>
+                                        <li ng-bind-html="Current.Quran.Ayah">{{Current.Quran.Ayah}}</li>
+                                        <li ng-bind-html="Current.Quran.SurahList">{{Current.Quran.SurahList}}</li>
+                                    </ul>
+
+
+
+                                </p>
+
+
+                                <div ng-repeat="s in Current.Surahs">
+                                    <label ng-bind-html="s.Name1">{{s.Name1}}</label>
+                                    <ul style="list-style-type:none; font-weight:bolder;font-size:x-large;" class="text-danger">
+                                        <li ng-repeat="ayah in s.Ayahs">{{ayah}}</li>
+
+                                    </ul>
+
+                                </div>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>

@@ -1,0 +1,122 @@
+﻿
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Seerah Online</title>
+        <!-- Bootstrap Core CSS -->
+        <!--<link href="~/Content/bootstrap.min.css" rel="stylesheet">-->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" />
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/styles.css" />
+        <!-- Custom CSS -->
+        <link href="~/Content/simple-sidebar.css" rel="stylesheet">
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body ng-app="SeerahApp" ng-controller="SeerahController">
+        <nav class="navbar navbar-fixed-top navbar-dark bg-primary">
+            <button class="navbar-toggler hidden-sm-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+                ☰
+            </button>
+            <a class="navbar-brand" href="#">Navbar</a>
+            <div class="collapse navbar-toggleable-xs" id="collapsingNavbar">
+                <ul class="nav navbar-nav pull-right">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">Home</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#myAlert" data-toggle="collapse">Wow</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="" data-target="#myModal" data-toggle="modal">About</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container-fluid" id="main">
+            <div class="row row-offcanvas row-offcanvas-left">
+                <div class="col-md-3 col-lg-2 sidebar-offcanvas" id="sidebar" role="navigation">
+                    <div class="sidebar-nav ">
+                        <div class="accordion" id="accordion2">
+                            <div class="accordion-group boxshadow">
+                                <div class="accordion-heading">
+                                    <a class="accordion-toggle expanded" data-toggle="collapse" data-target="#collapseTwo" href="#">
+                                        Before Hijri
+                                    </a>
+                                </div><!-- accordion-heading -->
+                                <div id="collapseTwo" class="accordion-body collapse">
+                                    <div ng-repeat="bh in BeforeHijri" class="accordion-inner clearfix">
+                                        <a class="dropdown-item" href="#" ng-click="SelectHijri(bh,'before');">{{bh}}</a>
+                                     
+                               
+                                    </div><!-- accordion-inner -->
+                              
+                                </div><!-- accordion-heading-sub -->
+                            </div><!-- accordion-group -->
+                        </div><!-- accordian-->
+
+                    
+                            <div class="accordion-group boxshadow">
+                                <div class="accordion-heading">
+                                    <a class="accordion-toggle expanded" data-toggle="collapse" data-target="#collapseThree" href="#">
+                                        After Hijri
+                                    </a>
+                                </div><!-- accordion-heading -->
+                                <div id="collapseThree" class="accordion-body collapse">
+                                    <div ng-repeat="ah in AfterHijri" class="accordion-inner clearfix">
+                                        <a class="dropdown-item" href="#" ng-click="SelectHijri(ah,'after');">{{ah}}</a>
+
+
+                                    </div><!-- accordion-inner -->
+
+                                </div><!-- accordion-heading-sub -->
+                            </div><!-- accordion-group -->
+                    
+                    </div>
+                </div>
+             
+            <!-- /#sidebar-wrapper -->
+         
+                @RenderBody()
+                <hr />
+              
+        
+
+        </div>
+            </div>
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Seerah Online Web app</p>
+        </footer>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        <script src="~/Scripts/angular.min.js"></script>
+        <script src="~/Scripts/angular-sanitize.min.js"></script>
+        <script src="~/Scripts/app.js"></script>
+        <script src="~/Scripts/DataModelService.js"></script>
+        <script src="~/Scripts/SeerahController.js"></script>
+        <script src="~js/scripts.js"></script>
+        @RenderSection("scripts", required: false)
+
+        <!-- Menu Toggle Script -->
+        <script>
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
+    </body>
+
+</html>
